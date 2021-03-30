@@ -1,0 +1,107 @@
+#open-modal, input[type='submit'] {
+    position: absolute;
+    top: 53.66vw;
+    right:  33.2vw;
+    transform: translate(-50%, -50%);
+
+
+
+
+
+
+
+}
+#open-modal{
+    font-size: 1.16vw;
+    text-transform: uppercase;
+    color: #5921f3;
+    padding: 20px;
+    border: none;
+    border-radius:  3.89vw;
+    cursor: pointer;
+    background: firebrick;
+}
+
+#open-modal:hover {
+    color: #000000;
+    background: green;
+    box-shadow: 0 0 0.77vw green, 0 0 3.11vw green, 0 0  6.23vw green;
+    transition-delay: 0.2s;
+}
+#contact-modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 0, 0);
+    
+}
+
+#modal-contact{
+    background: #efefef;
+    margin: 35px auto;
+    width: 60%;
+    box-shadow: 4px 4px 5px rgba(0, 0,0,25);
+    animation: modalSlideUp;
+    animation-duration: 1s;
+}
+#header{
+    background: #4586de;
+    color: #fff;
+    padding: 25px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+#header, .close-modal{
+    font-size: 50px;
+    float: right;
+}
+#header, .close-modal:hover{
+    color: #333;
+    cursor: pointer;
+}
+#modal-body{
+    padding: 25px 30px;
+}
+#modal-body, h5{
+    color: #4586de;
+    text-transform: uppercase;
+    font-size: 35px;
+    text-align: center;
+    margin: 30px 0px;
+}
+.form{
+    width: 75%;
+    margin: 20px 0;
+    margin-left: 12.5%;
+}
+.form, label{
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.form, input, textarea{
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+input[type='submit'] {
+    font-size: 20px;
+    margin-bottom: 30px;
+    width: 75%;
+    margin-left: 12.5%;
+    transition: 0.3s;
+}
+input[type='submit']:hover{
+    background: #3e78c7;
+}
+@keyframes modalSlideUp {
+    0% {
+        transform: translateY(0);
+    }
+}

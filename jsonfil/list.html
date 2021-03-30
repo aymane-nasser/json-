@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Solicode EVE</title>
+  <meta content="" name="description">
+
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/clipart1249120.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <!--  icon  -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous"> 
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!-- start Header -->
+    <header id="header" class="header fixed-top">
+        <div class=" container d-flex justify-content-between   ">
+    
+          <div class="logo d-flex align-items-center " style="margin-left: -100px;" >
+            <img src="assets/img/output-onlinepngtools (6).png" alt="">
+            <span></span>
+          </div>
+          
+          <!-- .navbar -->
+          <nav id="navbar" class="navbar mx-ul  "  style="margin-left:500px; ">
+            <ul>
+              <li><a class=" active" href="index.html">Home</a></li>
+              <li><a href="create.html">New Eve</a></li>
+              <li><a href="list.html">list Eve</a></li>
+     
+     
+            </ul>
+          </nav>
+          <!-- .navbar -->
+    
+        </div>
+      </header>
+      <!-- End Header -->
+
+
+
+<br><br><br><br><br><br><br>
+     <div class="container">
+      <header class="section-header">
+        <h2>Data</h2>
+        <p>List eve</p>
+      </header>
+      <table class="table table-striped" style="margin-left: -50PX;">
+          <tr class="bg-info">
+              <th>Title</th>
+              <th>date</th>
+              <th>Tag</th>
+              <th>Lien drive
+              <input type="text" name="search" id="search" placeholder="Search Employee Details" class="form-control" style="margin-left: 700PX; width: 300PX; margin-top: -20PX;" />
+
+              </th>
+          </tr>
+  
+          <tbody id="myTable">
+  
+          </tbody>
+      </table>
+    </div>
+  
+
+
+
+
+<br /><br />
+<br /><br /> <br /><br /> <br /><br />
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer" class="footer">
+
+
+<div class="container">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Solicode Veille</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by <a href="">KAOUTAR IZI | AYMANE NASSER</a>
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
+
+
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+  
+</html>
+
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            cache: false
+        });
+        $('#search').keyup(function() {
+            $('#myTable').html('');
+            $('#state').val('');
+            var searchField = $('#search').val();
+            var expression = new RegExp(searchField, "i");
+            $.getJSON('eves.json', function(data) {
+                $.each(data, function(key, value) {
+                    if (value.title.search(expression) != -1 || value.date.search(expression) != -1) {
+                        $('#myTable').append('<tr><td>' + value.title + ' </td>| <td>' + value.date + '</td><td>' + value.tag + '</td><td>' + value.lien + '</td><td>' + '</td></tr>');
+                    }
+                });
+            });
+        });
+
+        $('#myTable').on('click', 'li', function() {
+            var click_text = $(this).text().split('|');
+            $('#myTable').val($.trim(click_text[0]));
+            $("#myTable").html('');
+        });
+    });
+    $.getJSON("eves.json", function buildTable(data) {
+        var table = document.getElementById('myTable')
+
+        for (var i = 0; i < data.length; i++) {
+            var row = `<tr>
+                            <td>${data[i].title}</td>
+                            <td>${data[i].date}</td>
+                            <td>${data[i].tag}</td>
+                            <td>${data[i].lien}</td>
+                      </tr>`
+            table.innerHTML += row
+
+
+        }
+    })
+</script>
+
+<script>
+</script>
+
+
+
+  
